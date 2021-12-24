@@ -47,7 +47,7 @@ useEffect(() => {
 
 ps. React는 부모 컴포넌트가 리랜더링 되면 자식 컴포넌트도 리랜더링 된다. 자식 컴포넌트가 바뀐 내용이 없을지라도. 실제 DOM에 반영되는건 바뀐 컴포넌트만 해당하지만 Virtual DOM에는 모든걸 다 렌더링 하는 것.
 
-#### `useEffect`는 함수를 return 할 수 있는데 return 하는 힘수가 바로 `clean up` 함수이다.
+#### `useEffect`는 함수를 return 할 수 있는데 return 하는 함수가 바로 `clean up` 함수이다.
 
 `clean up`함수는 `useEffect`에 대한 뒷정리를 해주는 함수이다.
 
