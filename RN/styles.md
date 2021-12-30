@@ -20,15 +20,13 @@
 
 #### 부모 컴포넌트의 flex 값이 기준이 되어 자식 컴포넌트의 flex 비율이 정해진다.
 
-#### ```
-
+```javascript
 <View style={{ flex: 1 }}>
-<View style={{ flex: 1, backgroundColor: "tomato" }}></View>
-<View style={{ flex: 5, backgroundColor: "skyblue" }}></View>
-<View style={{ flex: 1, backgroundColor: "orange" }}></View>
+  <View style={{ flex: 1, backgroundColor: "tomato" }}></View>
+  <View style={{ flex: 5, backgroundColor: "skyblue" }}></View>
+  <View style={{ flex: 1, backgroundColor: "orange" }}></View>
 </View>
-
-#### ```
+```
 
 #### ScrollView에서 style을 적용해주고 싶으면 `props style`말고 `container style`을 써주자
 
