@@ -1,0 +1,20 @@
+### `concat` vs `push` vs `spread`
+배열 병합 시 가장 효율적인 방법은 어떤 것일까?
+
+### `concat`은 JS에서 사실상 배열 병합의 표준
+`concat`은 가독성 좋고 안전함
+원본 배열 변화 X
+### `push`
+`push`도 읽기 쉽지만 `concat`이나 `spread`에 비해 조금 더 긴 코드를 작성해야됨.
+또한 원본 배열을 변경시킴
+### `spread`
+`spread`는 배열을 각 요소로 확장시킴.
+원본 배열 변화 X
+
+### 배열 크기가 작을 때(size < 50,000)
+`spread`가 가장 빠름
+
+### 배열 크기가 아주 클 때
+`concat`이 가장 빠름
+
+https://velog.io/@jaewoogwak/%EB%B0%B0%EC%97%B4-%EB%B3%91%ED%95%A9%EC%9D%84-%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
