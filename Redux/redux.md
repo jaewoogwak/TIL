@@ -118,7 +118,7 @@ console.log(store.getState())
 
 어떤 일이 발생했을 때, 우리는 스토어가 이것을 알기를 원한다. 리듀서는 이벤트리스너처럼 행동하고 상태를 지켜보다가 필요에 따라 업데이트 한다.
 
-```Javscript
+```Javascript
 const increment = () => {
   return {
     type: 'counter/increment'
