@@ -12,6 +12,7 @@ Redux는 앱의 많은 부분에 필요한 전역 상태를 관리하는 데 도
 
 ## Redux는 one-way data flow
 Actions -> State -> View -> Actions ..
+![onewaydataflow](https://ko.redux.js.org/assets/images/one-way-data-flow-04fe46332c1ccb3497ecb04b94e55b97.png)
 
 ### Actions(액션)
 액션은 `type`을 필드로 가지는 자바스크립트 객체다.
@@ -50,7 +51,93 @@ const addTodo = text => {
 
 `(state, action) => newState)`
 
+리듀서는 다음 규칙을 따라야 한다.
 
+- state와 action을 기반으로 새로운 state 값만 계산해야함
+- 기존 state를 수정할 수 없음
+- 기존 state를 복사하고 복사된 값을 변경하는 Immutability를 지켜야함
+- 비동기 로직 같은 side effects를 수행하면 안됨
+
+리듀서의 실행은 다음 단계를 거친다.
+
+
+1. 리듀서가 액션에 관심이 있는가(새로운 상태를 반환해야 하는가)
+
+   1.1. 그렇다면 상태의 복사본을 만들고, 복사본으로 새로운 상태 값을 만들고 리턴
+
+2. 그렇지 않다면 현재 상태를 변경하지 않고 리턴
+
+```Javascript
+const initialState = { value: 0 }
+
+function counterReducer(state = initialState, action) {
+  // Check to see if the reducer cares about this action
+  if (action.type === 'counter/increment') {
+    // If so, make a copy of `state`
+    return {
+      ...state,
+      // and update the copy with the new value
+      value: state.value + 1
+    }
+  }
+  // otherwise return the existing state unchanged
+  return state
+}
+```
+
+### Store(스토어)
+리덕스 의 현재 상태는 스토어라는 객체에 있다.
+
+스토어는 리듀서를 전달하여 생성되고 현재 상태 값을 반환하는 메서드를 갖는다.
+
+```Javascript
+import { configureStore } from '@reduxjs/toolkit'
+
+const store = configureStore({ reducer: counterReducer })
+
+console.log(store.getState())
+// {value: 0}
+```
+### Dispatch(디스패치)
+Redux store는 `dispatch`라는 메서드를 가진다.
+
+상태를 업데이트하는 단 하나의 방법이 `store.dispatch`를 호출하여 액션 객체를 전달하는 것이다.
+
+스토어는 리듀서를 실행하고 내부에 새 상태값을 저장한다.
+
+또한 `getState()`로 업데이트 된 값을 호출할 수 있다.
+
+```Javascript
+store.dispatch({ type: 'counter/increment' })
+
+console.log(store.getState())
+// {value: 1}
+```
+
+액션을 디스패치 하는 것을 이벤트를 트리거하는 것으로 생각할 수 있다.
+
+어떤 일이 발생했을 때, 우리는 스토어가 이것을 알기를 원한다. 리듀서는 이벤트리스너처럼 행동하고 상태를 지켜보다가 필요에 따라 업데이트 한다.
+
+```Javscript
+const increment = () => {
+  return {
+    type: 'counter/increment'
+  }
+}
+
+store.dispatch(increment())
+
+console.log(store.getState())
+// {value: 2}
+```
+
+### Redux 애플리케이션 데이터
+- 상태는 특정 시점의 앱 상태를 나타냄
+- UI는 해당 상태를 기반으로 렌더링됨
+- 사용자가 버튼을 클릭하는 것과 같은 일(action)이 발생하면 상황에 따라 상태가 업데이트 됨(dispatch)
+- UI는 새 상태를 기반으로 다시 렌더링 됨(reducer(state, action){...})
+
+![imgae](https://ko.redux.js.org/assets/images/ReduxDataFlowDiagram-49fa8c3968371d9ef6f2a1486bd40a26.gif)
 
 
 
