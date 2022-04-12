@@ -51,6 +51,12 @@ function handwrittenReducer(state, action) {
 
 안전하게 업데이트 된 값을 리턴한다.
 
+```Javascript
+function reducerWithImmer(state, action) {
+  state.first.second[action.someId].fourth = action.someValue
+}
+```
+
 이러한 `Immer`는 오직 `createSlice`와 `createReducer` 안에서만 적용되며, 
 
 외부에서 상태를 직접 변경할 경우 `Immer`의 마법효력이 없어질 것이다.
