@@ -62,5 +62,14 @@ function reducerWithImmer(state, action) {
 외부에서 상태를 직접 변경할 경우 `Immer`의 마법효력이 없어질 것이다.
 
 
+## useSelector Hook
+useSelector Hook은 `import { useSelector } from "react-redux";`로 가져올 수 있다.
+
+`useSelector`은 리덕스 스토어의 `state`에 접근한다.
+
+`useSelector`에 전달되는 `state` 값은 리덕스 스토어에 저장된 <strong>상태 트리(state tree)</strong>이다.
+
+따라서 `state`의 `.` dot 연산자로 특정 상태에 접근할 수 있다. 즉, 원하는 상태값을 가져올 수 있다.
+
 
 
