@@ -1,0 +1,11 @@
+const month = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const day = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"]
+function solution(a, b) {
+    let count = -1;
+    for(let i =0; i<a; i++) {
+        count += month[i];
+    }
+    count -= month[a-1]
+    count += b;
+    return day[count % 7];   
+}
