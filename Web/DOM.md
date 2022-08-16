@@ -28,3 +28,18 @@ console.log(tag);
 DOM은 유저가 HTML 문서를 조작할 수 있도록 조작 가능한 방법을 제공한다.
 
 그 방법은 HTML 요소를 객체들의 집합으로 표현함으로써 자바스크립트로 접근 및 조작 가능하게 하는 것이다.
+
+직관직인 예시를 살펴보자. 
+
+마찬가지로 아래 코드를 개발자 도구를 열어서 실행시켜보자.
+
+```javascript
+document.body.style.background = 'red'; // 배경을 붉은색으로 변경하기
+setTimeout(() => document.body.style.background = '', 3000); // 원상태로 복구하기
+```
+
+화면이 붉게 물들었다가 다시 돌아왔을 것이다.
+
+`document.body` 는 `body` 태그를 객체로 나타낸 것이다.
+
+우리가 **자바스크립트로 접근하고 조작할 수 있도록!**
