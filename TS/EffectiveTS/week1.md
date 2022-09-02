@@ -291,21 +291,21 @@ const v: NamedVector = { x: 3, y: 4, name: 'Zee' };
 calculateLength(v);  // OK, result is 5
 ```
 
+흥미로운 점은 Vector2D와 NamedVector의 관계를 전혀 선언하지 않았음에도 잘 작동하는 것이다.
+
+NamedVector의 구조가 Vector2D와 호환되기 때문에 calculate Length 호출이 가능하다.
+
+여기서 '구조적 타이핑(structual typing)'이라는 용어가 사용된다.
 
 
+## any 타입 지양하기
 
+- any 타입은 안전성이 없다
+- any는 함수 시그니처를 무시한다 (호출하는 쪽은 약속된 타입의 입력을 제공, 함수는 약속된 타입의 출력을 반환 -> any는 이런 약속을 어긴다)
+- any는 언어 서비스 자동완성 기능과 도움말 제공을 받지 못한다
+- any는 타입 설계를 감춘다
+- any는 타입시스템의 신뢰도를 떨어뜨린다
 
-
-
-
-
-
-
-
-
-
-
-
-
+any를 쓸거면 타입스크립트를 쓸 이유가 없다.
 
 
